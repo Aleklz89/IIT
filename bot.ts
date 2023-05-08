@@ -1,18 +1,12 @@
 import { Bot } from "grammy";
 
-// Create an instance of the `Bot` class and pass your bot token to it.
-const bot = new Bot("5649698055:AAFbvEAk4ZJRJMc6h-WjaeRuB_EJ8pfv4LE"); // <-- put your bot token between the ""
+// Створення екземпляру бота, за допомогою токену
+const bot = new Bot("5649698055:AAFbvEAk4ZJRJMc6h-WjaeRuB_EJ8pfv4LE");
 
-// You can now register listeners on your bot object `bot`.
-// grammY will call the listeners when users send messages to your bot.
+// Обробка команди /start
+bot.command("start", (ctx) => ctx.reply("The Bot is working!"));
+// Обробка всіх інших повідомлень
+bot.on("message", (ctx) => ctx.reply("New message from user!"));
 
-// Handle the /start command.
-bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
-// Handle other messages.
-bot.on("message", (ctx) => ctx.reply("Got another message!"));
-
-// Now that you specified how to handle messages, you can start your bot.
-// This will connect to the Telegram servers and wait for messages.
-
-// Start the bot.
+// Запуск бота
 bot.start();
